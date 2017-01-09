@@ -396,7 +396,7 @@ QString logInvoke(const QMetaMethod& meta_method,
     QStringList args_sl;
     std::transform(ns.begin(), ns.end(), ps.begin(),
                    std::back_inserter(args_sl),
-                   [](auto x, auto y) -> QString {
+                   [](const decltype(*ns.begin())& x, const decltype(*ps.begin())& y) -> QString {
                        return static_cast<QString>(x) + ": " + y;
                    }
         );
@@ -420,3 +420,6 @@ QString logInvoke(const QMetaMethod& meta_method,
 }
 
 }
+
+
+#include "json_rpc_server.moc"

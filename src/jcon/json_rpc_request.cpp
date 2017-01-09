@@ -16,3 +16,6 @@ JsonRpcRequest::~JsonRpcRequest()
 }
 
 }
+
+
+#include "json_rpc_request.moc"

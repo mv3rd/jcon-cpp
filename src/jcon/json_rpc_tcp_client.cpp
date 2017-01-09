@@ -16,3 +16,6 @@ JsonRpcTcpClient::~JsonRpcTcpClient()
 }
 
 }
+
+
+#include "json_rpc_tcp_client.moc"

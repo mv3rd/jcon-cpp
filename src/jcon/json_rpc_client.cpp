@@ -276,3 +276,6 @@ void JsonRpcClient::logError(const QString& msg)
 }
 
 }
+
+
+#include "json_rpc_client.moc"

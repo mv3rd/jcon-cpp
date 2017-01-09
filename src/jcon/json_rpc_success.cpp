@@ -11,3 +11,6 @@ JsonRpcSuccess::~JsonRpcSuccess()
 }
 
 }
+
+
+#include "json_rpc_socket.moc"

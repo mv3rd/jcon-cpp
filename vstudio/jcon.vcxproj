@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SolutionDir)lib\jcon-cpp\vstudio\jcon.props" />
+  <Import Project="$(SolutionDir)settings.props" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B7BF02BB-1C09-4E7A-8C43-2D3531978B10}</ProjectGuid>
+    <RootNamespace>jcon</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <ItemGroup>
+    <ClCompile Include="$(SrcDir)json_rpc_client.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_debug_logger.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_endpoint.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_error.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_file_logger.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_logger.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_request.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_server.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_success.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_tcp_client.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_tcp_server.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_tcp_socket.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_websocket.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_websocket_client.cpp" />
+    <ClCompile Include="$(SrcDir)json_rpc_websocket_server.cpp" />
+    <ClCompile Include="$(SrcDir)string_util.cpp" />
+    <ClInclude Include="$(SrcDir)jcon_version.h" />
+    <ClInclude Include="$(SrcDir)jcon.h" />
+    <ClInclude Include="$(SrcDir)jcon_assert.h" />
+    <CustomBuild Include="$(SrcDir)json_rpc_client.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)json_rpc_debug_logger.h" />
+    <CustomBuild Include="$(SrcDir)json_rpc_endpoint.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)json_rpc_error.h" />
+    <ClInclude Include="$(SrcDir)json_rpc_file_logger.h" />
+    <ClInclude Include="$(SrcDir)json_rpc_logger.h" />
+    <CustomBuild Include="$(SrcDir)json_rpc_request.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)json_rpc_result.h" />
+    <CustomBuild Include="$(SrcDir)json_rpc_server.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_socket.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)json_rpc_success.h" />
+    <CustomBuild Include="$(SrcDir)json_rpc_tcp_client.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_tcp_server.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_tcp_socket.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_websocket.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_websocket_client.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_websocket_server.h">
+      <AdditionalInputs>$(QTDIR)bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message>Moc%27ing %(Filename).h...</Message>
+      <Outputs>$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc</Outputs>
+      <Command>"$(QTDIR)bin\moc.exe" "%(FullPath)" -o "$(QtOutputDir)$(Configuration)_$(Platform)\%(Filename).moc" $(QT_MOC_ARG)</Command>
+    </CustomBuild>
+
+    <ClInclude Include="$(SrcDir)string_util.h" />
+    <ResourceCompile Include="$(SrcDir)jcon.rc" />
+  </ItemGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>$(GlobalWholeProgramOptimization)</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(OutputDir)bin\$(Configuration)_$(Platform)/</OutDir>
+    <IntDir>$(OutputDir)tmp\$(ProjectName)\$(Configuration)_$(Platform)/</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='Win32'">
+    <IncludePath>$(GlobalIncPath_x86);$(IncludePath)</IncludePath>
+    <LibraryPath>$(GlobalLibPath_x86);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='x64'">
+    <IncludePath>$(GlobalIncPath_x64);$(IncludePath)</IncludePath>
+    <LibraryPath>$(GlobalLibPath_x64);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PROJECT_NAME=$(TargetName);$(TargetName)_EXPORT;_WINDOWS;WIN32;_USRDLL;$(GlobalPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <BrowseInformation>false</BrowseInformation>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>$(UseMultiProcessorCompilation)</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(OutputDir)pdb\$(Configuration)_$(Platform)\$(TargetName).vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <DisableSpecificWarnings>4244;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(GlobalAdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>$(GlobalDelayLoadDLLs);%(DelayLoadDLLs)</DelayLoadDLLs>
+      <SubSystem>Windows</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <ProgramDatabaseFile>$(OutputDir)pdb\$(Configuration)_$(Platform)\$(TargetName).pdb</ProgramDatabaseFile>
+      <StripPrivateSymbols>$(OutputDir)pdb\$(Configuration)_$(Platform)\$(TargetName)_pub.pdb</StripPrivateSymbols>
+      <MapFileName>$(OutputDir)map\$(Configuration)_$(Platform)\$(TargetName).map</MapFileName>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>$(GlobalAdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <LinkTimeCodeGeneration>$(GlobalWholeProgramOptimization)</LinkTimeCodeGeneration>
+    </Lib>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PROJECT_NAME=$(TargetName);$(GlobalPreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <NullTerminateStrings>true</NullTerminateStrings>
+    </ResourceCompile>
+    <Bscmake>
+      <PreserveSbr>$(GenPreserveSbr)</PreserveSbr>
+      <OutputFile>$(OutputDir)bsc\$(Configuration)_$(Platform)\$(TargetName).bsc</OutputFile>
+    </Bscmake>
+    <MASM>
+      <WarningLevel>0</WarningLevel>
+    </MASM>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
+    <ClCompile>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <CreateHotpatchableImage>true</CreateHotpatchableImage>
+    </ClCompile>
+    <MASM>
+      <UseSafeExceptionHandlers>true</UseSafeExceptionHandlers>
+    </MASM>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <StringPooling>true</StringPooling>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AssemblerOutput>All</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <BaseAddress>$(FixBaseAddress)</BaseAddress>
+      <BaseAddress Condition="Exists('$(BaseAddressLocation)')">@"$(BaseAddressLocation)",$(ProjectName)</BaseAddress>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>

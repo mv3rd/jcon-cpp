@@ -152,3 +152,6 @@ QByteArray chopLeft(const QByteArray& bytes, int n)
 }
 
 }
+
+
+#include "json_rpc_endpoint.moc"

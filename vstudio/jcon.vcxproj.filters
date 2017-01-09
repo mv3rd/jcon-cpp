@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(SrcDir)json_rpc_client.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_debug_logger.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_endpoint.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_error.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_file_logger.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_logger.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_request.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_server.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_success.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_tcp_client.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_tcp_server.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_tcp_socket.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_websocket.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_websocket_client.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)json_rpc_websocket_server.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SrcDir)string_util.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(SrcDir)jcon_version.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SrcDir)jcon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SrcDir)jcon_assert.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <CustomBuild Include="$(SrcDir)json_rpc_client.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)json_rpc_debug_logger.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <CustomBuild Include="$(SrcDir)json_rpc_endpoint.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)json_rpc_error.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SrcDir)json_rpc_file_logger.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SrcDir)json_rpc_logger.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <CustomBuild Include="$(SrcDir)json_rpc_request.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)json_rpc_result.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <CustomBuild Include="$(SrcDir)json_rpc_server.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_socket.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)json_rpc_success.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <CustomBuild Include="$(SrcDir)json_rpc_tcp_client.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_tcp_server.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_tcp_socket.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_websocket.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_websocket_client.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <CustomBuild Include="$(SrcDir)json_rpc_websocket_server.h">
+      <Filter>include</Filter>
+    </CustomBuild>
+    <ClInclude Include="$(SrcDir)string_util.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="$(SrcDir)jcon.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

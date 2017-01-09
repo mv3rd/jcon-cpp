@@ -112,3 +112,6 @@ void JsonRpcWebSocket::dataReady(const QString& data)
 }
 
 }
+
+
+#include "json_rpc_websocket.moc"

@@ -111,3 +111,6 @@ void JsonRpcTcpServer::disconnectClient(QObject* client_socket)
 }
 
 }
+
+
+#include "json_rpc_tcp_server.moc"

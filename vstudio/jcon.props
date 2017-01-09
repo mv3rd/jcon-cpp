@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <WorkDir>$(SolutionDir)/</WorkDir>
+    <SrcDir>$(WorkDir)lib\jcon-cpp\src\jcon/</SrcDir>
+    <UseQT>true</UseQT>
+    <UseQtNetwork>true</UseQtNetwork>
+    <UseQtWebSockets>true</UseQtWebSockets>
+    <UseQtTest>true</UseQtTest>
+    <GlobalPreprocessorDefinitions>JCON_DLL;JCON_DLL_EXPORTS</GlobalPreprocessorDefinitions>
+  </PropertyGroup>
+</Project>

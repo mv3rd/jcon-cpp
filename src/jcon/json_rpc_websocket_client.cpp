@@ -17,3 +17,6 @@ JsonRpcWebSocketClient::~JsonRpcWebSocketClient()
 }
 
 }
+
+
+#include "json_rpc_websocket_client.moc"

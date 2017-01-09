@@ -106,3 +106,6 @@ void JsonRpcWebSocketServer::disconnectClient(QObject* client_socket)
 }
 
 }
+
+
+#include "json_rpc_websocket_server.moc"
