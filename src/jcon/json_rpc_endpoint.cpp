@@ -94,18 +94,12 @@ int JsonRpcEndpoint::peerPort() const
 void JsonRpcEndpoint::send(const QJsonDocument& doc)
 {
     QByteArray bytes = doc.toJson(QJsonDocument::Compact);
-#ifdef _DEBUG
-    m_logger->logInfo("send: " + bytes);
-#endif /* #ifdef _DEBUG */
     m_socket->send(bytes);
 }
 
 void JsonRpcEndpoint::dataReady(const QByteArray& bytes, QObject* socket)
 {
     JCON_ASSERT(bytes.length() > 0);
-#ifdef _DEBUG
-    m_logger->logInfo("recv: " + bytes);
-#endif /* #ifdef _DEBUG */
     m_recv_buffer += bytes;
     m_recv_buffer = processBuffer(m_recv_buffer, socket);
 }

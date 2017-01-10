@@ -27,17 +27,28 @@ JsonRpcWebSocketServer::~JsonRpcWebSocketServer()
     m_server = nullptr;
 }
 
-void JsonRpcWebSocketServer::listen(int port)
+bool JsonRpcWebSocketServer::listen(int port)
 {
     logInfo(QString("listening on port %2").arg(port));
-    m_server->listen(QHostAddress::Any, port);
+    if (!m_server->listen(QHostAddress::Any, port)) {
+        auto msg = QString("Error listening on port %1").arg(port);
+        logError(qPrintable(msg));
+        return false;
+    }
+    return true;
 }
 
 
-void JsonRpcWebSocketServer::listen(const QHostAddress& addr, int port)
+bool JsonRpcWebSocketServer::listen(const QHostAddress& addr, int port)
 {
     logInfo(QString("listening on port %2").arg(port));
-    m_server->listen(addr, port);
+    if (!m_server->listen(addr, port)) {
+        auto msg = QString("Error listening on %1:%2")
+            .arg(addr.toString()).arg(port);
+        logError(qPrintable(msg));
+        return false;
+    }
+    return true;
 }
 
 void JsonRpcWebSocketServer::close()

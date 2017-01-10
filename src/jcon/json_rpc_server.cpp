@@ -180,24 +180,7 @@ bool JsonRpcServer::convertArgs(const QMetaMethod& meta_method,
             return false;
         }
 
-        QByteArray arg_type_name = arg.typeName();
-        QByteArray param_type_name = param_types.at(i);
-
-        QVariant::Type param_type = QVariant::nameToType(param_type_name);
-
-        QVariant copy = QVariant(arg);
-
-        if (copy.type() != param_type) {
-            if (copy.canConvert(param_type)) {
-                if (!copy.convert(param_type)) {
-                    // qDebug() << "cannot convert" << arg_type_name
-                    //          << "to" << param_type_name;
-                    return false;
-                }
-            }
-        }
-
-        converted_args << copy;
+        converted_args << arg;
     }
     return true;
 }
@@ -231,24 +214,7 @@ bool JsonRpcServer::convertArgs(const QMetaMethod& meta_method,
             return false;
         }
 
-        QByteArray arg_type_name = arg.typeName();
-        QByteArray param_type_name = param_types.at(i);
-
-        QVariant::Type param_type = QVariant::nameToType(param_type_name);
-
-        QVariant copy = QVariant(arg);
-
-        if (copy.type() != param_type) {
-            if (copy.canConvert(param_type)) {
-                if (!copy.convert(param_type)) {
-                    // qDebug() << "cannot convert" << arg_type_name
-                    //          << "to" << param_type_name;
-                    return false;
-                }
-            }
-        }
-
-        converted_args << copy;
+        converted_args << arg;
     }
     return true;
 }
@@ -319,41 +285,13 @@ QJsonDocument JsonRpcServer::createResponse(const QString& request_id,
                                             const QVariant& return_value,
                                             const QString& method_name)
 {
-    QJsonObject res_json_obj {
+    QVariantMap res_json_obj{
         { "jsonrpc", "2.0" },
-        { "id", request_id }
+        { "id", request_id },
+        { "result", return_value }
     };
 
-    if (return_value.type() == QVariant::Invalid) {
-        res_json_obj["result"] = QJsonValue();
-    } else if (return_value.type() == QVariant::List) {
-        auto ret_doc = QJsonDocument::fromVariant(return_value);
-        res_json_obj["result"] = ret_doc.array();
-    } else if (return_value.type() == QVariant::Map) {
-        auto ret_doc = QJsonDocument::fromVariant(return_value);
-        res_json_obj["result"] = ret_doc.object();
-    } else if (return_value.type() == QVariant::Int) {
-        res_json_obj["result"] = return_value.toInt();
-    } else if (return_value.type() == QVariant::LongLong) {
-        res_json_obj["result"] = return_value.toLongLong();
-    } else if (return_value.type() == QVariant::Double) {
-        res_json_obj["result"] = return_value.toDouble();
-    } else if (return_value.type() == QVariant::Bool) {
-        res_json_obj["result"] = return_value.toBool();
-    } else if (return_value.type() == QVariant::String) {
-        res_json_obj["result"] = return_value.toString();
-    } else {
-        auto msg =
-            QString("method '%1' has unknown return type: %2")
-            .arg(method_name)
-            .arg(return_value.type());
-        logError(msg);
-        return createErrorResponse(request_id,
-                                   JsonRpcError::EC_InvalidRequest,
-                                   msg);
-    }
-
-    return QJsonDocument(res_json_obj);
+    return QJsonDocument::fromVariant(res_json_obj);
 }
 
 QJsonDocument JsonRpcServer::createErrorResponse(const QString& request_id,
