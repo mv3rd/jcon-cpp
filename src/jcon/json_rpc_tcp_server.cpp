@@ -22,7 +22,7 @@ JsonRpcTcpServer::~JsonRpcTcpServer()
 void JsonRpcTcpServer::listen(int port)
 {
     logInfo(QString("listening on port %1").arg(port));
-    if (!m_server.listen(QHostAddress::AnyIPv4, port)) {
+    if (!m_server.listen(QHostAddress::Any, port)) {
         auto msg = QString("Error listening on port %1").arg(port);
         logError(qPrintable(msg));
         return;

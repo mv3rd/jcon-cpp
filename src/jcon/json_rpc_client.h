@@ -82,7 +82,7 @@ private slots:
     void jsonResponseReceived(const QJsonObject& obj);
 
 private:
-    static const int CallTimeout = 5000;
+    static const int CallTimeout = INT_MAX;
     static const QString InvalidRequestId;
 
     static QString getCallLogMessage(const QString& method,
