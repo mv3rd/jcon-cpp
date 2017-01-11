@@ -109,16 +109,9 @@ bool JsonRpcServer::dispatch(const QString& method_name,
         for (int i = 0; i < meta_obj->methodCount(); ++i) {
             auto meta_method = meta_obj->method(i);
             if (meta_method.name() == method_name) {
-                if (params.type() == QVariant::List ||
-                    params.type() == QVariant::StringList)
-                {
-                    if (call(s, meta_method, params.toList(), return_value)) {
-                        return true;
-                    }
-                } else if (params.type() == QVariant::Map) {
-                    if (call(s, meta_method, params.toMap(), return_value)) {
-                        return true;
-                    }
+                JCON_ASSERT(params.type() == QVariant::List || params.type() == QVariant::StringList);
+                if (call(s, meta_method, params.toList(), return_value)) {
+                    return true;
                 }
             }
         }
@@ -133,32 +126,15 @@ bool JsonRpcServer::call(QObject* object,
 {
     return_value = QVariant();
 
-    QVariantList converted_args;
-    if (!convertArgs(meta_method, args, converted_args)) {
+    if (!convertArgs(meta_method, args)) {
         return false;
     }
 
-    return doCall(object, meta_method, converted_args, return_value);
-}
-
-bool JsonRpcServer::call(QObject* object,
-                         const QMetaMethod& meta_method,
-                         const QVariantMap& args,
-                         QVariant& return_value)
-{
-    return_value = QVariant();
-
-    QVariantList converted_args;
-    if (!convertArgs(meta_method, args, converted_args)) {
-        return false;
-    }
-
-    return doCall(object, meta_method, converted_args, return_value);
+    return doCall(object, meta_method, args, return_value);
 }
 
 bool JsonRpcServer::convertArgs(const QMetaMethod& meta_method,
-                                const QVariantList& args,
-                                QVariantList& converted_args)
+                                const QVariantList& args)
 {
     QList<QByteArray> param_types = meta_method.parameterTypes();
     if (args.size() != param_types.size()) {
@@ -179,42 +155,6 @@ bool JsonRpcServer::convertArgs(const QMetaMethod& meta_method,
                      .arg(QString(meta_method.methodSignature())));
             return false;
         }
-
-        converted_args << arg;
-    }
-    return true;
-}
-
-bool JsonRpcServer::convertArgs(const QMetaMethod& meta_method,
-                                const QVariantMap& args,
-                                QVariantList& converted_args)
-{
-    QList<QByteArray> param_types = meta_method.parameterTypes();
-    if (args.size() != param_types.size()) {
-        logError(QString("wrong number of arguments to method %1 -- "
-                         "expected %2 arguments, but got %3")
-                 .arg(QString(meta_method.methodSignature()))
-                 .arg(meta_method.parameterCount())
-                 .arg(args.size()));
-        return false;
-    }
-
-    for (int i = 0; i < param_types.size(); i++) {
-        QByteArray param_name = meta_method.parameterNames().at(i);
-        if (args.find(param_name) == args.end()) {
-            // no arg with param name found
-            return false;
-        }
-        const QVariant& arg = args.value(param_name);
-        if (!arg.isValid()) {
-            logError(QString("argument %1 of %2 to method %3 is invalid")
-                     .arg(i + 1)
-                     .arg(param_types.size())
-                     .arg(QString(meta_method.methodSignature())));
-            return false;
-        }
-
-        converted_args << arg;
     }
     return true;
 }
@@ -222,36 +162,27 @@ bool JsonRpcServer::convertArgs(const QMetaMethod& meta_method,
 // based on https://gist.github.com/andref/2838534.
 bool JsonRpcServer::doCall(QObject* object,
                            const QMetaMethod& meta_method,
-                           QVariantList& converted_args,
+                           const QVariantList& args,
                            QVariant& return_value)
 {
     QList<QGenericArgument> arguments;
 
-    for (int i = 0; i < converted_args.size(); i++) {
-
-        // Notice that we have to take a reference to the argument, else we'd be
-        // pointing to a copy that will be destroyed when this loop exits.
-        QVariant& argument = converted_args[i];
-
-        // A const_cast is needed because calling data() would detach the
-        // QVariant.
-        QGenericArgument generic_argument(
-            QMetaType::typeName(argument.userType()),
-            const_cast<void*>(argument.constData())
-        );
-
-        arguments << generic_argument;
+    for (auto& argument : args) {
+        arguments << QGenericArgument(
+            QMetaType::typeName(QMetaType::QVariant),
+            &argument);
     }
 
     const char* return_type_name = meta_method.typeName();
     int return_type = QMetaType::type(return_type_name);
+    JCON_ASSERT(return_type != QMetaType::UnknownType);
     if (return_type != QMetaType::Void) {
         return_value = QVariant(return_type, nullptr);
     }
 
     QGenericReturnArgument return_argument(
         return_type_name,
-        const_cast<void*>(return_value.constData())
+        return_type != QMetaType::QVariant ? const_cast<void*>(return_value.constData()) : &return_value
     );
 
     // perform the call
@@ -276,7 +207,7 @@ bool JsonRpcServer::doCall(QObject* object,
         return false;
     }
 
-    logInfo(logInvoke(meta_method, converted_args, return_value));
+    logInfo(logInvoke(meta_method, args, return_value));
 
     return true;
 }
