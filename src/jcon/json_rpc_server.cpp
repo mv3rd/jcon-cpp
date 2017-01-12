@@ -216,7 +216,7 @@ QJsonDocument JsonRpcServer::createResponse(const QString& request_id,
                                             const QVariant& return_value,
                                             const QString& method_name)
 {
-    QVariantMap res_json_obj{
+    QVariantMap res_json_obj {
         { "jsonrpc", "2.0" },
         { "id", request_id },
         { "result", return_value }
